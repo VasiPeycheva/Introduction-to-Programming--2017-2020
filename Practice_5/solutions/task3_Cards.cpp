@@ -3,14 +3,16 @@
 const int CardCount = 52;
 const int CardsFromColor = 13;
 
+//valid only for MS  
 const char ClubSymbol = 0x05;
 const char DiamondSymbol = 0x04;
 const char HeartSymbol = 0x03;
 const char SpadeSymbol = 0x06;
 
+
 enum CardColors {
 
-	Clubs, // = 0
+	Clubs  , // = 0
 	Diamonds, // = previous + 1
 	Hearts,
 	Spades
@@ -60,12 +62,13 @@ int main() {
 		std::cout << "the chosen card is : ";
 
 
-		//plus 1, because it is easier make the cases
+		//plus 1, because it is easier to 'code' the cases
 		switch (cardPicture + 1) {
 
 		case 1: std::cout << 'A'; break; //we should use break,bacause
 										 //otherwise we will "fall down" 
-			                            //and enter in every other case clause
+										//and enter in every other case clause
+										//before 'seeing' the next break
 		case 2: std::cout << '2'; break;
 		
 		case 3: std::cout << '3'; break;
@@ -94,8 +97,9 @@ int main() {
 
 		}
 
-		switch (cardColor)
-		{
+		//using enumeration makes our own code to be much easier
+		//to read and understand
+		switch (cardColor){
 
 		case Clubs: std::cout << ClubSymbol; break;
 
@@ -111,7 +115,7 @@ int main() {
 		std::cout << '\n';
 		break;
 
-	} while (true);
+	} while (true); //endless loop - the only way to 'exit' the loop is by breaking it or using return 
 
 	
 	return 0;

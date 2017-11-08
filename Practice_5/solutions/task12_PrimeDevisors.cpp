@@ -10,6 +10,7 @@ int main() {
 
 	for (int i = 2; i <= N; i++) {
 
+		//dividing the numbers as many times as it can
 		while (N % i == 0) {
 
 			std::cout << i;

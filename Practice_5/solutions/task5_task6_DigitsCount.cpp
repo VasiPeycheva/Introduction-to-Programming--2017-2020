@@ -16,8 +16,6 @@ int main() {
 	//using some math
 	std::cout << "math : " << (unsigned int)(1 + log10(number)) << '\n';
 
-
-
 	while (number) { // same as number != 0
 
 		digitsCount++;
@@ -28,7 +26,7 @@ int main() {
 
 	std::cout <<"simple loop : " << digitsCount << '\n';
 
-	/*
+	
 	std::cout << "task 6 result : \n";
 	while (numberCopy) { 
 
@@ -36,7 +34,7 @@ int main() {
 		numberCopy /= 10;
 
 	}
-	*/
+	
 
 
 	return 0;

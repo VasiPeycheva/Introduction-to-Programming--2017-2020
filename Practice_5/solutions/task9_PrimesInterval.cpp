@@ -11,10 +11,13 @@ int main() {
 	unsigned long long sq;
 	bool isPrimeCurrent = true;
 
+	//iterating each number between 'a' and 'b'
 	for (unsigned long long i = a; i < b; i++) {
 		
 		if (i <= 2) {
-			break;
+
+			sum += i;
+			continue; //going directly to the next loop
 		}
 
 		sq = sqrt(i);
@@ -25,7 +28,7 @@ int main() {
 			if (i % j == 0) {
 
 				isPrimeCurrent = false;
-				break;
+				break; //breaks the nearest loop
 			}
 
 		}

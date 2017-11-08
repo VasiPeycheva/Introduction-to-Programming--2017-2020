@@ -1,5 +1,6 @@
 #include<iostream>
 
+//calculated by just making tests
 const unsigned short LIMIT = 23;
 
 int main() {
@@ -11,7 +12,7 @@ int main() {
 
 	if (N > LIMIT)
 	{
-		std::cout << "can calculate only to " << LIMIT << "which is ";
+		std::cout << "can calculate only to " << LIMIT << "! which equals to ";
 		N = LIMIT;
 	}
 

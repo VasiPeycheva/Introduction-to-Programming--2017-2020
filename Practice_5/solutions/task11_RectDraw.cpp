@@ -11,12 +11,14 @@ int main() {
 		return 0;
 	}
 
-	for (unsigned int i = 0; i < x; i++) {
+	//top line
+	for (unsigned int i = 0; i < x; i++)
 		std::cout << "* ";
-	}
+	
 
 	std::cout << '\n';
 	
+	//the side lines
 	for (unsigned int i = 0; i < y - 2; i++) {
 
 		std::cout << "* ";
@@ -28,6 +30,7 @@ int main() {
 		std::cout << "*\n";
 	}
 
+	//the bottom line
 	for (unsigned int i = 0; i < x; i++) {
 		std::cout << "* ";
 	}

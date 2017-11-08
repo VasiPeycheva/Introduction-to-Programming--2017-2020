@@ -1,6 +1,5 @@
 #include<iostream>
 
-
 int main() {
 
 	unsigned int a, b, c;
@@ -9,7 +8,7 @@ int main() {
 
 	if (a > b) {
 
-		if (a > c) {
+		if (a > c){
 
 			if (b > c) {
 				std::cout << a << " > "
@@ -18,13 +17,13 @@ int main() {
 			}
 			else {
 				std::cout << a << " > "
-					<< c << " > "
+					<< c << " >= "
 					<< b << '\n';
 			}
 		}
 		else{ // a > b && a <= c
-
-			std::cout << c << " > "
+				
+			std::cout << c << " >= "
 				<< a << " > "
 				<< b << '\n';
 
@@ -32,25 +31,25 @@ int main() {
 		}
 
 	}
-	else { // a < b
+	else { // a <= b
 
 		if (b > c) {
 			
 			if (a > c) {
-				std::cout << b << " > "
+				std::cout << b << " >= "
 					<< a << " > "
 					<< c << '\n';
 			}
 			else {
 				std::cout << b << " > "
-					<< c << " > "
+					<< c << " >= "
 					<< a << '\n';
 			}
 
 		}
 		else { // b <= c
-			std::cout << c << " > "
-				<< b << " > "
+			std::cout << c << " >= "
+				<< b << " >= "
 				<< a << '\n';
 		}
 	}

@@ -14,6 +14,8 @@ int main() {
 
 		std::cin >> currentNumber;
 
+		//for each input number we are
+		//adding its digits to the sum
 		while (currentNumber) {
 
 			sumDigits += (currentNumber % 10);

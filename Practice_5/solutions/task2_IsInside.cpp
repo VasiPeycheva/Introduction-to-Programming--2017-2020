@@ -67,7 +67,7 @@ int main() {
 
 	if (y > 0) {
 
-		//the center is (0,0) so the math is much more easier
+		//the center is (0,0), so the math is much more easier
 		distPntToCenter = sqrt((x * x) + (y * y));
 
 		if (distPntToCenter <= MushroomRadius)
