@@ -8,7 +8,7 @@ int main() {
 
 	std::cout << "N is ";
 
-	//is 1 realy  a prime ?
+	//is 1 really  a prime ?
 	if (N <= 2)
 		std::cout << "prime!\n";
 
