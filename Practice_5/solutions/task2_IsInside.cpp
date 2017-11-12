@@ -34,7 +34,7 @@ int main() {
 	//our point's x should be between the rectangle's x-coordinates
 	//and same logic about the y coordinate
 	if ((x >= RectX1) && (x <= RectX2) && //checks x 
-		(y <= RectY1) && (y >= RectY2) ){ //and checks y
+	    (y <= RectY1) && (y >= RectY2) ){ //and checks y
 
 		std::cout << "is inside the given rectangle!\n";
 	}
@@ -49,7 +49,7 @@ int main() {
 	//and the center of the circle is less the circle's radius
 
 	double distPntToCenter = sqrt((CircleCenterX - x) * (CircleCenterX - x) +
-								  (CircleCenterY - y) * (CircleCenterY - y));
+				      (CircleCenterY - y) * (CircleCenterY - y));
 
 	//we are losing some precision here,but
 	//we will discuss it later trough the semester
