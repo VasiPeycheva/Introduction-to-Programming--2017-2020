@@ -152,7 +152,7 @@ void readInputN() {
 //no return value -> return type 'void'
 void printGreetings() {
 
-	std::cout << "Hello, this are our examples "
+	std::cout << "Hello, these are our examples "
 	             "for function usage in C++\n\n";
 
 
