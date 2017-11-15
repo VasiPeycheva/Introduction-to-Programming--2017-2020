@@ -14,7 +14,7 @@ int main()
 	std::cout << "Enter the end of interval:\n";
 	std::cin >> to;
 	from = (from % 2 == 0) ? from : from + 1;
-	unsigned long sum = 0;
+	unsigned long long sum = 0;
 
 	for (int i = from; i <= to; i+=2)
 	{
