@@ -1,5 +1,11 @@
 #include <iostream>
+/*
+Task: Take the value of the first LSBs and place as value to the first MSBs.
+Examples:       Input:            Output:
+		from=0 to=1  n=0b11...01	   newN=0b11...11
+		from=1 to=31 n=0b11...01	   newN=0b01...01
 
+*/
 int main()
 {
 	unsigned short from, to;

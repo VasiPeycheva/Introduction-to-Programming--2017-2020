@@ -1,10 +1,18 @@
 #include <iostream>
+/*
+	Task: Take the value of the first LSBs and place as value to the first MSBs.
+		Examples:       Input:            Output: 
+					   n=0b111...101	   newN=0b011...101
+					   n=0b101...001	   newN=0b011...001
+
+*/
+
 //MSB --> Most Significant Bit
 //LSB --> Least Significant Bit
 int main()
 {
 	unsigned int number;
-	std::cin >> number;		//Example 11101...101  
+	std::cin >> number;		//Example: 11101...101  
 
 							//Number of shifted bits:    30 ... Full it with zeros
 	unsigned int mask = number << 30;			//    111...1|01 0...00
