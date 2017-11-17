@@ -1,6 +1,6 @@
 #include <iostream>
 /*
-	Task: Take the value of the first LSBs and place as value to the first MSBs.
+	Task: Take the value of the first two LSBs and place as value to the first two MSBs.
 		Examples:       Input:            Output: 
 					   n=0b111...101	   newN=0b011...101
 					   n=0b101...001	   newN=0b011...001
