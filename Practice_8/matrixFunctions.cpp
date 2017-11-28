@@ -75,7 +75,7 @@ void multiplyWithScalar(int mat[][MAX_COLS], size_t m, size_t n, int scalar)
 //task 4
 //Sum of two matrices with same size
 void sumMatrices(int M[MAX_ROWS][MAX_COLS], int T[MAX_ROWS][MAX_COLS],
-												  size_t m, size_t n)
+						   size_t m, size_t n)
 {
 	for (size_t row = 0; row < m; row++)
 	{
@@ -198,7 +198,7 @@ void saddlePoint(int mat[][MAX_ROWS], size_t rows, size_t cols)
 	for (size_t i = 0; i < rows; i++)
 		for (size_t j = 0; j < cols; j++)
 			if (isMaxInRow(mat[i][j], mat[i], cols)) { //we can pass the whole row
-								    				  //as a function argument
+								   //as a function argument
 				 //checking the column here,
 				 //because we can't pass it to a function
 
@@ -241,8 +241,8 @@ int main()
 	int matrix[MAX_ROWS][MAX_COLS]; //allocating enough memory
 							  
 	fillMatrix(matrix, m, n);    //3x3 //1 2 3
-									   //4 5 6
-									   //7 8 9
+					   //4 5 6
+					   //7 8 9
 
 	cout << "-----------------\n";
 	printMatrix(matrix, m, n);
@@ -256,16 +256,16 @@ int main()
 	printMatrix(matrix, m, n);
 
 	cout << "-----------------\n";
-								 //1 2 3
+				     //1 2 3
 	printFrame(matrix, m, n);    //4   6
-								 //7 8 9
+	      			     //7 8 9
 	cout << "-----------------\n";
 	printFrame2(matrix, m, n);
 
 	cout << "-----------------\n";
-								 //1   3
+	     			     //1   3
 	printDiagonals(matrix, n);   //  2
-							     //7   9
+				     //7   9
 	cout << "-----------------\n\n";
 	cout << "Enter a scalar: ";
 	cin >> scalar;
