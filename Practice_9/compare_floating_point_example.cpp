@@ -1,4 +1,4 @@
-#include<cstdio>
+#include<iostream>
 #include<cmath>
 
 const double EPS = 0.0001;
@@ -15,7 +15,7 @@ int main() {
 	//wrong approach
 	if (a == b) {
 
-		printf("a == b\n");
+		std::cout << "a == b\n";
 
 	}
 
@@ -23,7 +23,7 @@ int main() {
 	//checking how close are a and b
 	if (abs(a - b) < EPS) {
 
-		printf("EPS checking for \'a == b\'\n");
+		std::cout << "EPS checking for \'a == b\'\n";
 
 	}
 
