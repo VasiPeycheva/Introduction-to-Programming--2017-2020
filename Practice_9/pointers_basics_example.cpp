@@ -1,5 +1,10 @@
 #include<iostream>
 
+//read the functions definitions later
+//first go through the main
+void swap(int, int); //wrong approach
+void swap(int*, int*); //proper
+
 
 int main() {
 
@@ -72,5 +77,53 @@ int main() {
 	std::cout << "pointedVar == " << pointedVar;
 	std::cout <<" \\\\ *pOtherPointer == " << *pOtherPointer; //prints 42
 
+
+
+
+	//functions tests
+
+	int a = 10, b = 20;
+
+	std::cout << "\n\na = " << a << " b = " << b << '\n';
+
+	swap(a, b);
+	std::cout << "after calling swap(int,int) : \n";
+	std::cout << "a = " << a << " b = " << b << '\n';
+
+	//passing the addresses of the variables
+	swap(&a, &b);
+	std::cout << "after calling swap(int*,int*) : \n";
+	std::cout << "a = " << a << " b = " << b << '\n';
+
+		
+
 	return 0;
 }								
+
+//in this case a and b will
+//be copies of the actual parameters
+//so their values will be swapped
+//only inside the function body
+void swap(int a, int b) {
+
+	int temp = a;
+	a = b;
+	b = temp;
+
+	//a and b gets destroyed here
+}
+
+//we can solve the problem by passing
+//the addresses of the variables which
+//values we want to swap
+void swap(int* a, int* b) {
+
+	int temp = *a; // the value which a is pointing
+
+	*a = *b;
+
+	*b = temp;
+
+	//the pointer a and b gets destroyed here,
+	//but the actual passed arguments are changed
+}
