@@ -16,6 +16,8 @@ void printBitsRec(unsigned int number, unsigned int position)
 }
 
 // example of a "wrapper function"
+// "wrapper function" is a function which wraps another function (in our example the recursive one). 
+// It's essentially another function which calls the actual function.
 void printBits(unsigned int number)
 {
 	unsigned int position = sizeof(unsigned int) * 8; 
