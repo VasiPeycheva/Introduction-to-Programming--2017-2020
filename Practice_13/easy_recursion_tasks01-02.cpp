@@ -23,7 +23,8 @@ bool isPrimeRec(int number, int stop, int i)
 	return isPrimeRec(number, stop, i + 1);
 }
 
-//wrapper function
+// "wrapper function" is a function which wraps another function (in our example the recursive one). 
+// It's essentially another function which calls the actual function.
 bool isPrime(int number)
 {
 	return isPrimeRec(number, sqrt(number), 2);
