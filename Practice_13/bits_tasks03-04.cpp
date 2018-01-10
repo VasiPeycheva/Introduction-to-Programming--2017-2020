@@ -38,7 +38,6 @@ void countBitsRec(unsigned int number, unsigned int position, int &zeroes, int &
 		return countBitsRec(number, position - 1, zeroes, ones);
 }
 
-// 
 void countBits(unsigned int number)
 {
 	int zeroes = 0;
