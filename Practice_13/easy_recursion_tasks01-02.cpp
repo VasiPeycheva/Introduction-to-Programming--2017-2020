@@ -1,18 +1,24 @@
 ﻿#include <iostream>
 using namespace std;
 
+const int MAX = 12;
+
 /*************** Task 1 ***************/
 
-int factorial(int number)
+unsigned int factorial(unsigned int number)
 {
-	if (number == 1) return 1;
+	//limit
+	if (number > MAX)
+		return 0;
+	if (number == 0 || number == 1) 
+		return 1;
 	return number* factorial(number - 1);
 }
 
 /*************** Task 2 ***************/
 
 //main logic
-bool isPrimeRec(int number, int stop, int i)
+bool isPrimeRec(unsigned int number, unsigned int stop, unsigned int i)
 {
 	if (number == 1 || number == 2)
 		return true;
@@ -25,7 +31,7 @@ bool isPrimeRec(int number, int stop, int i)
 
 // "wrapper function" is a function which wraps another function (in our example the recursive one). 
 // It's essentially another function which calls the actual function.
-bool isPrime(int number)
+bool isPrime(unsigned int number)
 {
 	return isPrimeRec(number, sqrt(number), 2);
 }
@@ -33,14 +39,19 @@ bool isPrime(int number)
 
 int main()
 {
-	int number;
+	unsigned int number;
 
 	// task 1
 	cin >> number;
-	cout << numberfactoriel(number) << endl;
+	cout << factorial(number) << endl;
 
 	// task 2
 	cin >> number;
-	cout << isPrime(number) << endl;
-	
+	if (isPrime(number))
+		cout << "is prime \n";
+	else
+		cout << "not prime \n";
+
+	return 0;
 }
+

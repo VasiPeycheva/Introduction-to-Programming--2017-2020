@@ -5,7 +5,7 @@ using namespace std;
 // sum all numbers in the range 1 ... n
 
 // linear recursion
-int sumLinear(int num, int result)
+unsigned int sumLinear(unsigned int num,unsigned int result)
 {
 	if (num == 0)
 		return result;
@@ -13,7 +13,7 @@ int sumLinear(int num, int result)
 }
 
 // tail recursion
-int sumTail(int num)
+unsigned int sumTail(unsigned int num)
 {
 	if (num == 0)
 		return 0;
