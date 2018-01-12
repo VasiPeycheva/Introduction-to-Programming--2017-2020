@@ -1,7 +1,4 @@
 ﻿#include <iostream>
-#include <chrono>
-#include <ctime>
-
 using namespace std;
 
 /******** From Class ********/
