@@ -28,7 +28,7 @@ double divLinear(double num, double result)
 {
 	if (num == 1)
 		return result;
-	return dev(num - 1, result / num);
+	return divLinear(num - 1, result / num);
 }
 
 // tail recursion
@@ -36,5 +36,5 @@ double divTail(double num)
 {
 	if (num == 0)
 		return 1;
-	return num / dev1(num - 1);
+	return num / divTail(num - 1);
 }
