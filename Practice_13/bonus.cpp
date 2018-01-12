@@ -1,4 +1,7 @@
 ﻿#include <iostream>
+#include <chrono>
+#include <ctime>
+
 using namespace std;
 
 /******** From Class ********/
@@ -9,7 +12,7 @@ unsigned int sumLinear(unsigned int num,unsigned int result)
 {
 	if (num == 0)
 		return result;
-	return sum(num - 1, result + num);
+	return sumLinear(num - 1, result + num);
 }
 
 // tail recursion
@@ -17,7 +20,7 @@ unsigned int sumTail(unsigned int num)
 {
 	if (num == 0)
 		return 0;
-	return num + sum1(num - 1);
+	return num + sumTail(num - 1);
 }
 
 /******** Bonus ********/
@@ -38,3 +41,28 @@ double divTail(double num)
 		return 1;
 	return num / divTail(num - 1);
 }
+
+
+int main()
+{
+	double num = 5;
+	double resultLinear = divLinear(num, 1);
+	cout << "DivLinear " << resultLinear << std::endl;
+	cout << "DivTail " << divTail(num) << std::endl;
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
