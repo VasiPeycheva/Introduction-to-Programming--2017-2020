@@ -42,8 +42,7 @@ int main() {
 
 			if (choice == 'y')
 				continue; //starting the loop from the beginning
-			else 
-			{
+			else {
 				if (choice == 'n')
 					std::cout << "Goodbye!\n";
 				else
