@@ -10,8 +10,8 @@ int main() {
 
 	std::cin >> N;
 
-	if (N > LIMIT)
-	{
+	if (N > LIMIT){
+		
 		std::cout << "can calculate only to " << LIMIT << "! which equals to ";
 		N = LIMIT;
 	}
