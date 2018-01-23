@@ -14,8 +14,8 @@ int square(int x) {
 
 bool checkInterval(int beg, int end, fptrMathFunc mf) {
 
-	for (int i = beg; i < end - 1; i++)
-		for (int j = i + 1; j < end; j++)
+	for (int i = beg; i <= end - 1; i++)
+		for (int j = i + 1; j <= end; j++)
 			if (mf(i) == mf(j))
 				return true;
 
