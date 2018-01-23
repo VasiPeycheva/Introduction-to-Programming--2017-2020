@@ -37,11 +37,8 @@ int main() {
 	    (y <= RectY1) && (y >= RectY2) ){ //and checks y
 
 		std::cout << "is inside the given rectangle!\n";
-	}
-	else{
-
+	} else
 		std::cout << "is NOT inside the given rectangle!\n";
-	}
 
 	
 	//checking if the point is int the given circle
@@ -73,8 +70,7 @@ int main() {
 		if (distPntToCenter <= MushroomRadius)
 			isInsideMushroom = true;
 
-	}
-	else {
+	} else {
 
 		if ((x >= MushroomRectX1) &&
 			(x <= MushroomRectX2) &&
