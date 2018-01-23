@@ -42,7 +42,7 @@ void fillMatrix(const size_t k, size_t it, size_t curSize) {
 	for (size_t i = 0; i < curSize; i++)
 		matrix[startCell + i][startCell] = it++;
 
-	//left fill ->
+	//right fill ->
 	for (size_t i = 1; i < curSize; i++)
 		matrix[border][startCell+ i] = it++;
 
@@ -50,7 +50,7 @@ void fillMatrix(const size_t k, size_t it, size_t curSize) {
 	for (size_t i = border - 1; i > startCell; i--)
 		matrix[i][border] = it++;
 
-	//right fill <-
+	//left fill <-
 	for (size_t i = border; i > startCell; i--)
 		matrix[startCell][i] = it++;
 
