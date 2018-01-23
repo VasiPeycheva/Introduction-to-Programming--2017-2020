@@ -14,40 +14,35 @@ int main() {
 				std::cout << a << " > "
 					<< b << " > "
 					<< c << '\n';
-			}
-			else {
+			} else {
 				std::cout << a << " > "
 					<< c << " >= "
 					<< b << '\n';
 			}
-		}
-		else{ // a > b && a <= c
+		} else{ // a > b && a <= c
 				
 			std::cout << c << " >= "
 				<< a << " > "
 				<< b << '\n';
-
-
 		}
-
-	}
-	else { // a <= b
+	} else { // a <= b
 
 		if (b > c) {
 			
 			if (a > c) {
+				
 				std::cout << b << " >= "
 					<< a << " > "
 					<< c << '\n';
-			}
-			else {
+			} else {
+				
 				std::cout << b << " > "
 					<< c << " >= "
 					<< a << '\n';
 			}
 
-		}
-		else { // b <= c
+		} else { // b <= c
+			
 			std::cout << c << " >= "
 				<< b << " >= "
 				<< a << '\n';
