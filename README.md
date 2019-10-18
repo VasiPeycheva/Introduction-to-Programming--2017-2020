@@ -22,7 +22,7 @@
 
 Source code, tasks and examples during the IP courses<br> @ Faculty of Mathematics and Informatics, Sofia University
 
-Team:
+Team:<br>
 2017-2018 - (VIP edition) the course was held by
 [Vasilena](https://www.linkedin.com/in/vasilena-peycheva-vpp/), [Ivan](www.linkedin.com/in/ivan-filipov-v11), [Plamen](https://www.linkedin.com/in/psminev/)<br>
 2019-2020 - [Ivan](www.linkedin.com/in/ivan-filipov-v11) and Kristian
