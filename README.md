@@ -4,8 +4,8 @@
 2017-2020г. спец. Информатика, ФМИ, СУ
 
 Преподавателски състав:<br>
-2017-2018 - (ВИП) [Василена](https://www.linkedin.com/in/vasilena-peycheva-vpp/), [Иван](www.linkedin.com/in/ivan-filipov-v11), [Пламен](https://www.linkedin.com/in/psminev/)<br>
-2019-2020 - [Иван](www.linkedin.com/in/ivan-filipov-v11) и Кристиан
+2017-2018 - (ВИП) [Василена](https://www.linkedin.com/in/vasilena-peycheva-vpp/), [Иван](https://www.linkedin.com/in/ivan-filipov-v11/), [Пламен](https://www.linkedin.com/in/psminev/)<br>
+2019-2020 - [Иван](https://www.linkedin.com/in/ivan-filipov-v11/) и Кристиан
 
 ## Организация на хранилището:
    * `/XX_<topic>/` - поддиректории с примери, разделени по седмици и теми
@@ -24,8 +24,8 @@ Source code, tasks and examples during the IP courses<br> @ Faculty of Mathemati
 
 Team:<br>
 2017-2018 - (VIP edition) the course was held by
-[Vasilena](https://www.linkedin.com/in/vasilena-peycheva-vpp/), [Ivan](www.linkedin.com/in/ivan-filipov-v11), [Plamen](https://www.linkedin.com/in/psminev/)<br>
-2019-2020 - [Ivan](www.linkedin.com/in/ivan-filipov-v11) and Kristian
+[Vasilena](https://www.linkedin.com/in/vasilena-peycheva-vpp/), [Ivan](https://www.linkedin.com/in/ivan-filipov-v11/), [Plamen](https://www.linkedin.com/in/psminev/)<br>
+2019-2020 - [Ivan](https://www.linkedin.com/in/ivan-filipov-v11/) and Kristian
 
 ## Repository organization:
    * `/XX_<topic>/` - subdirectories, dividing the content into weeks and topics
