@@ -30,22 +30,22 @@ int main() {
     }
 
     // calculate the discriminant
-    double D = b * b - (4 * a * c);
-    if (D < 0) {
+    double disc = b * b - (4 * a * c);
+    if (disc < 0) {
         // negative discriminant
         std::cout << "The equation has no real roots!" << std::endl;
-    } else if (D > 0) {
+    } else if (disc > 0) {
         // positive discriminant
         double x1, x2;
-        x1 = (-b + sqrt(D)) / (2 * a);
+        x1 = (-b + sqrt(disc)) / (2 * a);
         x2 = -x1 - b/a;     // Viète's formula
         std::cout << "The equation " << a << "x^2 + " << b << "x + " << c << " = 0"
                    << " has two roots: " << x1 << " and " << x2 << std::endl;
     } else {
         // zero discriminant
-        double X = -b / (2*a);
+        double x = -b / (2 * a);
         std::cout << "The equation " << a << "x^2 + " << b << "x + " << c << " = 0"
-                  << " has one double root: " << X << std::endl;
+                  << " has one double root: " << x << std::endl;
     }
 
     return 0;
