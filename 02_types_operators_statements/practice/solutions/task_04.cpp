@@ -28,7 +28,7 @@ int main() {
 	unsigned short a, b, c;
 	std::cout << "Input sides: ";
 	std::cin >> a >> b >> c;
-	float semi_per = (a + b + c) / 2.0; // calculate the semi-parameter
+	float semi_per = (a + b + c) / 2.0f; // calculate the semi-parameter
 	// calculate the area, using Heron's formula
     area = std::sqrt(semi_per * (semi_per - a) * (semi_per - b) * (semi_per - c));
 	std::cout << "Area: " << area << std::endl;
