@@ -37,3 +37,6 @@
 
 # Old examples, pending to be added
 /archive
+
+# VS code stuff
+.vscode/
