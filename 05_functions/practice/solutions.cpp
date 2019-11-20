@@ -15,7 +15,7 @@
 #include <iomanip>
 
 #define _USE_MATH_DEFINES // should be added for M_PI's value
-#include <cmath>   // sqrt()
+#include <math.h>  // sqrt(), it also seems M_PI is only present in the C header but not in C++ 
 #include <climits> // INT_MAX
 
 // using typedef we can call a standard type with another name
