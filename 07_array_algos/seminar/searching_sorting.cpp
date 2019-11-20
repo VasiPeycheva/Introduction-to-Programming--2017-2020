@@ -15,33 +15,33 @@
 #include <ctime>   // std::time()
 #include <cstdlib> // std::rand(), std::srand()
 
-const int MAX_SIZE = 10; // array max size
-const int TEST_CNT = 10; // number of tests
+const size_t  MAX_SIZE = 10; // array max size
+const int     TEST_CNT = 10; // number of tests
 const int MAX_ELEM_VAL = 100; // maximum value for filling arrays
 
 // initialize an array with random values
-void init_arr(int arr[], int size) {
+void init_arr(int arr[], size_t size) {
 
-    for (int i = 0; i < size; i++)
+    for (size_t i = 0; i < size; i++)
         arr[i] = std::rand() % (MAX_ELEM_VAL + 1); // rand() returns a big number and we map it to [0, 100]
 }
 
 // simply output an array content
-void print_arr(int arr[], int size) {
+void print_arr(int arr[], size_t size) {
 
-    for (int i = 0; i < size; i++)
+    for (size_t i = 0; i < size; i++)
         std::cout << arr[i] << ' ';
     std::cout << std::endl;
 }
 
 // find the minimum element in an array [what is it and what is it's index]
-void min_arr(int arr[], int size) {
+void min_arr(int arr[], size_t size) {
 
     int min_val = arr[0]; // let's assume that arr[0] is the smallest
     int min_ind = 0;      // and it's index is 0
 
     // go through all other elements
-    for (int i = 1; i < size; i++) {
+    for (size_t i = 1; i < size; i++) {
         if (arr[i] < min_val) { // if there is a smaller element than the current minimum
             min_val = arr[i];   // update the current minimum
             min_ind = i;        // and it's index
@@ -56,7 +56,7 @@ void min_arr(int arr[], int size) {
 
 // sorting a given array,
 // using Selection sort algorithm
-void sort_arr(int arr[], int size) {
+void sort_arr(int arr[], size_t size) {
     // the strategy here is quite simple:
     // just logically divide the array into two parts
     // sorted and unsorted
@@ -65,20 +65,20 @@ void sort_arr(int arr[], int size) {
     int min_val;
     int min_ind;
 
-    for (int i = 0; i < size - 1; i++) {
+    for (size_t i = 0; i < size - 1; i++) {
         // current minimal
         min_val = arr[i];
         min_ind = i;
         // search "unsorted" part for smaller element
         // than the current minimal
-        for (int j = i + 1; j < size; j++) {
+        for (size_t j = i + 1; j < size; j++) {
             if (arr[j] < min_val) {
                 min_val = arr[j]; // update the current min
                 min_ind = j;
             }
         }
         // swap only if there is a smaller element
-        if (min_ind != i) {
+        if (min_ind != (int)i) {
             int t  = arr[i];
             arr[i] = arr[min_ind];
             arr[min_ind] = t;
@@ -91,10 +91,10 @@ void sort_arr(int arr[], int size) {
 // using linear search algorithm
 // return index if found,
 // -1 if element is not presenting
-int linear_search(int arr[], int size, int searched_el) {
+int linear_search(int arr[], size_t size, int searched_el) {
 
     // try each element sequently
-    for (int i = 0; i < size; i++)
+    for (size_t i = 0; i < size; i++)
         if (arr[i] == searched_el)
             return i;
     // not fount
@@ -105,7 +105,7 @@ int linear_search(int arr[], int size, int searched_el) {
 // using binary search algorithm
 // return index if found,
 // -1 if element is not presenting
-int binary_search(int arr[], int size, int searched_el) {
+int binary_search(int arr[], size_t size, int searched_el) {
 
     int left  = 0;        // sub-array start index (from the whole array)
     int right = size - 1; // sub-array end   index (from the whole array)
@@ -138,16 +138,16 @@ int binary_search(int arr[], int size, int searched_el) {
 
 // run some searches for random elements
 // compares linear and binary search results
-void run_searching_tests(int arr[], int size) {
+void run_searching_tests(int arr[], size_t size) {
 
     int searched_el = 0;
     int ls, bs;
     for (int i = 1; i < TEST_CNT; i++) {
         searched_el = rand() % (MAX_ELEM_VAL + 1);
         std::cout << "searching for "  << searched_el << ':' << std::endl;
-        std::cout << "linear search: " << (ls = linear_search(arr, MAX_SIZE, searched_el));
+        std::cout << "linear search: " << (ls = linear_search(arr, size, searched_el));
         std::cout << std::endl;
-        std::cout << "binary search: " << (bs = binary_search(arr, MAX_SIZE, searched_el));
+        std::cout << "binary search: " << (bs = binary_search(arr, size, searched_el));
         std::cout << std::endl;
 
         if (bs != ls) std::cout << "Test FAILED!!!" << std::endl;
