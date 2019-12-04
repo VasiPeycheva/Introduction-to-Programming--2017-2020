@@ -48,7 +48,7 @@ int insert_elem(int arr[], size_t size, int elem) {
   
     // we traverse backwards in order to move the elements one step to the right
     // to make room for our new element
-    size_t i;
+    int i;
     for (i = size - 1; (i >= 0 && arr[i] > elem); i--) {
         arr[i + 1] = arr[i]; 
     }
@@ -188,7 +188,7 @@ void sort_matrix(int matrix[][MAX_COLS], size_t rows, size_t cols) {
 }
 
 // helper function for task_08
-int get_min(int arr[], size_t& size) {
+int get_min(int arr[], size_t size) {
 
     int min_elem = arr[0];
     size_t min_ind = 0;
@@ -200,8 +200,7 @@ int get_min(int arr[], size_t& size) {
         }
     }
     
-    if (min_ind != 0)
-        std::swap(arr[min_ind], arr[size--]);
+    std::swap(arr[min_ind], arr[size - 1]);
 
     return min_elem;
 }
