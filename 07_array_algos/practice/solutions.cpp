@@ -15,8 +15,9 @@
 #include <time.h>
 
 const size_t MAX_N = 1024; // max number of elements we can store
-const size_t MAX_ROWS = 10;
-const size_t MAX_COLS = 10;
+const size_t SORTED_SIZE = 6;
+const size_t MAX_ROWS = 5;
+const size_t MAX_COLS = 5;
 const size_t BOYS_SIZE = 10;
 const size_t GIRLS_SIZE = 10;
 
@@ -58,7 +59,7 @@ int insert_elem(int arr[], size_t size, int elem) {
 
 // task_03
 // because we want to return the updated size
-int delete_elem(int arr[], size_t size, int elem) {
+int remove_elem(int arr[], size_t size, int elem) {
 
     if (size < 1) {
         std::cout << "There are no elements here :( \n";
@@ -221,43 +222,137 @@ void party_array() {
     int result[BOYS_SIZE + GIRLS_SIZE] = { 0 };
 
     for (size_t i = 0; i < BOYS_SIZE; ) {
+		// generating one boy height
         size_t height = rand() % 50 + 150;
+		// if it is even we add it to the array by keeping the array sorted
         if (height % 2 == 1) {
             insert_elem(boys, i, height);
             i++;
         }
     }
-    for (size_t i = 0; i < GIRLS_SIZE; i++) {
+    for (size_t i = 0; i < GIRLS_SIZE; ) {
         size_t height = rand() % 50 + 150;
+		// same as boys but even instead of odd
         if (height % 2 == 0) {
-            insert_elem(boys, i, height);
+            insert_elem(girls, i, height);
             i++;
         }
     }
 
+	std::cout << "Boys array: \n";
+	print_array(boys, BOYS_SIZE);
+	std::cout << "\nGirls array: \n";
+	print_array(girls, GIRLS_SIZE);
+
     size_t cnt = 0;
     for (size_t i = BOYS_SIZE; i > 0; i--) {
 
+		// get the two smallest people and 'remove' them so
+		// that they dont take part in the next minimum
         int smallest_boy = get_min(boys, i);
         int smallest_girl = get_min(girls, i);
         result[cnt++] = smallest_boy;
         result[cnt++] = smallest_girl;
     }
-    
+
+	std::cout << "\nComibned array: \n";
     print_array(result, BOYS_SIZE + GIRLS_SIZE);
+}
+
+void print_matrix(int matrix[][MAX_COLS], size_t rows)
+{
+	for (size_t i = 0; i < rows; i++)
+		print_array(matrix[i], MAX_COLS);
+}
+
+void init_arr(int arr[], size_t size) {
+
+	for (size_t i = 0; i < size; i++) {
+		std::cout << "arr[ " << i << " ] = ";
+		std::cin >> arr[i];
+	}
 }
 
 int main() {
 
     srand(time(0));
 
-    int arr1[6] = {1, 2, 4, 6, 7, 10};
-    int arr2[6] = {3, 5, 8, 9, 11, 12 };
-    int arr3[12] = { 0 };
+	std::cout << "-----------Task 1-----------\n";
+	int sorted_descending[MAX_N];
+	size_t size;
+	std::cout << "Enter array size: ";
+	std::cin >> size;
+	init_arr(sorted_descending, size);
 
-    unite_arrays(arr1, arr2, arr3, 6);
+	std::cout << "Is the array sorted in descending order?\n";
+	if (descending_array(sorted_descending, size))
+		std::cout << "Yes\n";
+	else
+		std::cout << "No\n";
 
-    std::cout << "The array is in descending order: " << is_symetric(arr1, 6);
+	std::cout << "\n-----------Task 2-----------\n";
+
+	size = 6;
+	int sorted_ascending[MAX_N] = { 1, 5, 10, 12, 53, 72 };
+	std::cout << "Array before we add 11: \n";
+	print_array(sorted_ascending, size);
+	size = insert_elem(sorted_ascending, size, 11);
+	std::cout << "Array after we add 11: \n";
+	print_array(sorted_ascending, size);
+
+	std::cout << "\n-----------Task 3-----------\n";
+	std::cout << "Array before we remove 5: \n";
+	print_array(sorted_ascending, size);
+	size = remove_elem(sorted_ascending, size, 5);
+	std::cout << "Array after we remove 5: \n";
+	print_array(sorted_ascending, size);
+
+	std::cout << "\n-----------Task 4-----------\n";
+	int symietric_arr[MAX_N] = { 1, 5, 7, 5, 1 };
+	size = 5;
+	std::cout << "Is the array: ";
+	print_array(symietric_arr, size);
+	std::cout << " symetric? \n";
+	if (is_symetric(symietric_arr, size))
+		std::cout << "Yes\n";
+	else
+		std::cout << "No\n";
+
+	std::cout << "\n-----------Task 5-----------\n";
+	int src_arr[MAX_N] = { 3, 12, 5, 2, 3, 8, 4 };
+	std::cout << "Source array: \n";
+	size = 7;
+	print_array(src_arr, size);
+
+	int dest_arr[MAX_N];
+	int filtered_size = filter_primes(src_arr, dest_arr, size);
+	std::cout << "The filtered array:\n";
+	print_array(dest_arr, filtered_size);
+
+	std::cout << "\n-----------Task 6-----------\n";
+	int first_arr[SORTED_SIZE] = { 10, 12, 15, 20, 31, 81 };
+	int second_arr[SORTED_SIZE] = { 1, 7, 18, 20, 26, 102 };
+	int third_arr[2* SORTED_SIZE];
+	unite_arrays(first_arr, second_arr, third_arr, SORTED_SIZE);
+	std::cout << "First array + second array in sorted way: \n";
+	print_array(third_arr, 2 * SORTED_SIZE);
+
+	std::cout << "\n-----------Task 7-----------\n";
+	int matrix[MAX_ROWS][MAX_COLS] =
+	{{ 5, 8, 12, 95, 42 },
+	 { 3, 9, 7, 1, 6 },
+	 { 76, 4, 233, 63, 369},
+	 { 93, 943, 73, 1, 2 },
+	 { 17, 41, 76, 34, 45 } };
+
+	std::cout << "Matrix before it is sorted: \n";
+	print_matrix(matrix, MAX_ROWS);
+
+	sort_matrix(matrix, MAX_ROWS, MAX_COLS);
+	print_matrix(matrix, MAX_ROWS);
+
+	std::cout << "\n-----------Task 8-----------\n";
+	party_array();
 
     return 0;
 }
