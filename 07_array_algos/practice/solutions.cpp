@@ -12,12 +12,12 @@
 
 #include <iostream>
 #include <random>
-#include <time.h>
+#include <ctime>
 
 const size_t MAX_N = 1024; // max number of elements we can store
-const size_t SORTED_SIZE = 6;
-const size_t MAX_ROWS = 5;
-const size_t MAX_COLS = 5;
+const size_t SORTED_SIZE = 6; // helper const for task six
+const size_t MAX_ROWS = 5;	// for the matrix task
+const size_t MAX_COLS = 5; 
 const size_t BOYS_SIZE = 10;
 const size_t GIRLS_SIZE = 10;
 
@@ -25,7 +25,6 @@ const size_t GIRLS_SIZE = 10;
 bool descending_array(int arr[], size_t size) {
 
     for (size_t i = 0; i < size - 1; i++) {
-        
         if (arr[i] < arr[i + 1])
             return false;
     }
@@ -49,7 +48,7 @@ int insert_elem(int arr[], size_t size, int elem) {
     // we traverse backwards in order to move the elements one step to the right
     // to make room for our new element
     int i;
-    for (i = size - 1; (i >= 0 && arr[i] > elem); i--) {
+    for (i = (int)size - 1; (i >= 0 && arr[i] > elem); i--) {
         arr[i + 1] = arr[i]; 
     }
   
@@ -62,7 +61,7 @@ int insert_elem(int arr[], size_t size, int elem) {
 int remove_elem(int arr[], size_t size, int elem) {
 
     if (size < 1) {
-        std::cout << "There are no elements here :( \n";
+        std::cout << "There are no elements here :(" << std::endl;
         return size;
     }
     size_t i = 0;
@@ -70,7 +69,7 @@ int remove_elem(int arr[], size_t size, int elem) {
     while ((i < size) && (arr[i++] != elem)) {} // to get the position of the element
     
     if (i >= size) {
-        std::cout << "This element does not exist in the given array!\n";
+        std::cout << "This element does not exist in the given array!" << std::endl;
         return size;
     }
 
@@ -89,15 +88,11 @@ bool is_symetric(int arr[], size_t size) {
     size_t middle = size / 2;
     size_t i = 0;
 
-    while ((i < middle) && (arr[i] == arr[size - 1 - i])) {
-        ++i;
-    }
-    
-    if (i >= middle) 
-        return true;
+	for (size_t i = 0; i < middle; i++)
+		if (arr[i] != arr[size - 1 - i])
+			return false;
 
-    else 
-        return false;
+	return false;
 }
 
 // helper function to sort the array in task_05
@@ -118,11 +113,8 @@ void sort_arr(int arr[], size_t size) {
             }
         }
         
-        if (min_ind != (int)i) {
-            int t  = arr[i];
-            arr[i] = arr[min_ind];
-            arr[min_ind] = t;
-        }
+		std::swap(arr[i], arr[min_ind]);
+
     }
 }
 
@@ -131,7 +123,6 @@ int filter_primes(int src_arr[], int dest_arr[], size_t size) {
 
     int counter = 0;
     for (size_t i = 0; i < size; i++) {
-        
         if (src_arr[i] % 2 == 0)
             dest_arr[counter++] = src_arr[i];
     }
@@ -151,7 +142,6 @@ void unite_arrays(int first_arr[], int second_arr[], int result_arr[], size_t si
     while (i < size && j < size) {
         if (first_arr[i] <= second_arr[j])
             result_arr[counter++] = first_arr[i++];
-        
         else
             result_arr[counter++] = second_arr[j++];
     }
@@ -165,7 +155,8 @@ void unite_arrays(int first_arr[], int second_arr[], int result_arr[], size_t si
 
 // task_07
 void sort_matrix(int matrix[][MAX_COLS], size_t rows, size_t cols) {
-    for (size_t i = 0; i < rows; i++) {
+
+	for (size_t i = 0; i < rows; i++) {
         sort_arr(matrix[i], cols);
     }
 
@@ -210,7 +201,7 @@ void print_array(int arr[], size_t size) {
     for (size_t i = 0; i < size; i++) {
         std::cout << arr[i] << ' ';
     }
-    std::cout << '\n';
+    std::cout << std::endl;
 }
 
 // task_08
@@ -238,9 +229,9 @@ void party_array() {
         }
     }
 
-	std::cout << "Boys array: \n";
+	std::cout << "Boys array: " << std::endl;
 	print_array(boys, BOYS_SIZE);
-	std::cout << "\nGirls array: \n";
+	std::cout << "\nGirls array: " << std::endl;
 	print_array(girls, GIRLS_SIZE);
 
     size_t cnt = 0;
@@ -254,12 +245,12 @@ void party_array() {
         result[cnt++] = smallest_girl;
     }
 
-	std::cout << "\nComibned array: \n";
+	std::cout << "\nComibned array: " << std::endl;
+
     print_array(result, BOYS_SIZE + GIRLS_SIZE);
 }
 
-void print_matrix(int matrix[][MAX_COLS], size_t rows)
-{
+void print_matrix(int matrix[][MAX_COLS], size_t rows) {
 	for (size_t i = 0; i < rows; i++)
 		print_array(matrix[i], MAX_COLS);
 }
@@ -276,81 +267,83 @@ int main() {
 
     srand(time(0));
 
-	std::cout << "-----------Task 1-----------\n";
+	std::cout << "-----------Task 1-----------" << std::endl;
 	int sorted_descending[MAX_N];
 	size_t size;
 	std::cout << "Enter array size: ";
 	std::cin >> size;
 	init_arr(sorted_descending, size);
 
-	std::cout << "Is the array sorted in descending order?\n";
+	std::cout << "Is the array sorted in descending order?" << std::endl;
 	if (descending_array(sorted_descending, size))
-		std::cout << "Yes\n";
+		std::cout << "Yes" << std::endl;
 	else
-		std::cout << "No\n";
+		std::cout << "No" << std::endl;
 
-	std::cout << "\n-----------Task 2-----------\n";
+	std::cout << "\n-----------Task 2----------- << std::endl";
 
 	size = 6;
 	int sorted_ascending[MAX_N] = { 1, 5, 10, 12, 53, 72 };
-	std::cout << "Array before we add 11: \n";
+	std::cout << "Array before we add 11: " << std::endl;
 	print_array(sorted_ascending, size);
 	size = insert_elem(sorted_ascending, size, 11);
-	std::cout << "Array after we add 11: \n";
+	std::cout << "Array after we add 11: " << std::endl;
 	print_array(sorted_ascending, size);
 
-	std::cout << "\n-----------Task 3-----------\n";
-	std::cout << "Array before we remove 5: \n";
+	std::cout << "\n-----------Task 3-----------" << std::endl;
+	std::cout << "Array before we remove 5: " << std::endl;
 	print_array(sorted_ascending, size);
 	size = remove_elem(sorted_ascending, size, 5);
-	std::cout << "Array after we remove 5: \n";
+	std::cout << "Array after we remove 5: " << std::endl;
 	print_array(sorted_ascending, size);
 
-	std::cout << "\n-----------Task 4-----------\n";
+	std::cout << "\n-----------Task 4-----------" << std::endl;
 	int symietric_arr[MAX_N] = { 1, 5, 7, 5, 1 };
 	size = 5;
 	std::cout << "Is the array: ";
 	print_array(symietric_arr, size);
-	std::cout << " symetric? \n";
+	std::cout << " symetric?" << std::endl;
 	if (is_symetric(symietric_arr, size))
-		std::cout << "Yes\n";
+		std::cout << "Yes" << std::endl;
 	else
-		std::cout << "No\n";
+		std::cout << "No" << std::endl;
 
-	std::cout << "\n-----------Task 5-----------\n";
+	std::cout << "\n-----------Task 5-----------" << std::endl;
 	int src_arr[MAX_N] = { 3, 12, 5, 2, 3, 8, 4 };
-	std::cout << "Source array: \n";
+	std::cout << "Source array: " << std::endl;
 	size = 7;
 	print_array(src_arr, size);
 
 	int dest_arr[MAX_N];
 	int filtered_size = filter_primes(src_arr, dest_arr, size);
-	std::cout << "The filtered array:\n";
+	std::cout << "The filtered array:" << std::endl;
 	print_array(dest_arr, filtered_size);
 
-	std::cout << "\n-----------Task 6-----------\n";
+	std::cout << "\n-----------Task 6-----------" << std::endl;
 	int first_arr[SORTED_SIZE] = { 10, 12, 15, 20, 31, 81 };
 	int second_arr[SORTED_SIZE] = { 1, 7, 18, 20, 26, 102 };
 	int third_arr[2* SORTED_SIZE];
 	unite_arrays(first_arr, second_arr, third_arr, SORTED_SIZE);
-	std::cout << "First array + second array in sorted way: \n";
+	std::cout << "First array + second array in sorted way: " << std::endl;
 	print_array(third_arr, 2 * SORTED_SIZE);
 
-	std::cout << "\n-----------Task 7-----------\n";
-	int matrix[MAX_ROWS][MAX_COLS] =
-	{{ 5, 8, 12, 95, 42 },
-	 { 3, 9, 7, 1, 6 },
-	 { 76, 4, 233, 63, 369},
-	 { 93, 943, 73, 1, 2 },
-	 { 17, 41, 76, 34, 45 } };
+	std::cout << "\n-----------Task 7-----------" << std::endl;
+	int matrix[MAX_ROWS][MAX_COLS] = {
+		{ 5, 8, 12, 95, 42 },
+		{ 3, 9, 7, 1, 6 },
+		{ 76, 4, 233, 63, 369},
+		{ 93, 943, 73, 1, 2 },
+		{ 17, 41, 76, 34, 45 }
+	};
 
-	std::cout << "Matrix before it is sorted: \n";
+	std::cout << "Matrix before it is sorted: " << std::endl;
 	print_matrix(matrix, MAX_ROWS);
 
+	std::cout << "Matrix after sorting: " << std::endl;
 	sort_matrix(matrix, MAX_ROWS, MAX_COLS);
 	print_matrix(matrix, MAX_ROWS);
 
-	std::cout << "\n-----------Task 8-----------\n";
+	std::cout << "\n-----------Task 8-----------" << std::endl;
 	party_array();
 
     return 0;
