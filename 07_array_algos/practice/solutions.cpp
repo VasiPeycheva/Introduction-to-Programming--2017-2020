@@ -7,18 +7,22 @@
   * @author Ivan Filipov
   * @author Kristian Krastev
   * @date   12.2019
-  * @brief  Solution for function tasks from practice 7.
+  * @brief  Solution for array-algorithms tasks from practice 7.
   */
 
 #include <iostream>
 #include <random>
 #include <ctime>
 
-const size_t MAX_N = 1024; // max number of elements we can store
-const size_t SORTED_SIZE = 6; // helper const for task six
-const size_t MAX_ROWS = 5;	// for the matrix task
-const size_t MAX_COLS = 5; 
-const size_t BOYS_SIZE = 10;
+const size_t MAX_N       = 1024; // max number of elements we can store in an array
+const size_t SORTED_SIZE = 6;    // helper constant for the sixth task
+
+/* matrix size related constants */
+const size_t MAX_ROWS = 5;
+const size_t MAX_COLS = 5;
+
+/* boys and girls amount for task 8 */
+const size_t BOYS_SIZE  = 10;
 const size_t GIRLS_SIZE = 10;
 
 // task_01
@@ -28,7 +32,7 @@ bool descending_array(int arr[], size_t size) {
         if (arr[i] < arr[i + 1])
             return false;
     }
-    
+
     return true;
 }
 
@@ -36,7 +40,7 @@ bool descending_array(int arr[], size_t size) {
 // int because we want return the new size
 int insert_elem(int arr[], size_t size, int elem) {
 
-    if (size >= MAX_N) 
+    if (size >= MAX_N)
         return size;
 
     // if empty
@@ -44,14 +48,14 @@ int insert_elem(int arr[], size_t size, int elem) {
         arr[0] = elem;
         return 1;
     }
-  
+
     // we traverse backwards in order to move the elements one step to the right
     // to make room for our new element
     int i;
     for (i = (int)size - 1; (i >= 0 && arr[i] > elem); i--) {
-        arr[i + 1] = arr[i]; 
+        arr[i + 1] = arr[i];
     }
-  
+
     arr[i + 1] = elem;
     return size + 1;
 }
@@ -65,9 +69,9 @@ int remove_elem(int arr[], size_t size, int elem) {
         return size;
     }
     size_t i = 0;
-    
+
     while ((i < size) && (arr[i++] != elem)) {} // to get the position of the element
-    
+
     if (i >= size) {
         std::cout << "This element does not exist in the given array!" << std::endl;
         return size;
@@ -86,7 +90,6 @@ int remove_elem(int arr[], size_t size, int elem) {
 bool is_symetric(int arr[], size_t size) {
 
     size_t middle = size / 2;
-    size_t i = 0;
 
 	for (size_t i = 0; i < middle; i++)
 		if (arr[i] != arr[size - 1 - i])
@@ -102,7 +105,6 @@ void sort_arr(int arr[], size_t size) {
     int min_ind;
 
     for (size_t i = 0; i < size - 1; i++) {
-        
         min_val = arr[i];
         min_ind = i;
 
@@ -112,14 +114,13 @@ void sort_arr(int arr[], size_t size) {
                 min_ind = j;
             }
         }
-        
-		std::swap(arr[i], arr[min_ind]);
 
+		std::swap(arr[i], arr[min_ind]);
     }
 }
 
 // task_05
-int filter_primes(int src_arr[], int dest_arr[], size_t size) {
+int filter_evens(int src_arr[], int dest_arr[], size_t size) {
 
     int counter = 0;
     for (size_t i = 0; i < size; i++) {
@@ -149,7 +150,7 @@ void unite_arrays(int first_arr[], int second_arr[], int result_arr[], size_t si
     while(i < size)
         result_arr[counter++] = first_arr[i++];
 
-    while (j < size) 
+    while (j < size)
         result_arr[counter++] = second_arr[j++];
 }
 
@@ -171,7 +172,7 @@ void sort_matrix(int matrix[][MAX_COLS], size_t rows, size_t cols) {
                     min_index = k;
                 }
             }
-            
+
             if (min_index != j)
                 std::swap(matrix[min_index][i], matrix[j][i]);
         }
@@ -185,12 +186,12 @@ int get_min(int arr[], size_t size) {
     size_t min_ind = 0;
 
     for (size_t i = 0; i < size; i++) {
-        if(min_elem > arr[i]) { 
+        if(min_elem > arr[i]) {
             min_elem = arr[i];
             min_ind = i;
         }
     }
-    
+
     std::swap(arr[min_ind], arr[size - 1]);
 
     return min_elem;
@@ -201,6 +202,7 @@ void print_array(int arr[], size_t size) {
     for (size_t i = 0; i < size; i++) {
         std::cout << arr[i] << ' ';
     }
+
     std::cout << std::endl;
 }
 
@@ -315,7 +317,7 @@ int main() {
 	print_array(src_arr, size);
 
 	int dest_arr[MAX_N];
-	int filtered_size = filter_primes(src_arr, dest_arr, size);
+	int filtered_size = filter_evens(src_arr, dest_arr, size);
 	std::cout << "The filtered array:" << std::endl;
 	print_array(dest_arr, filtered_size);
 
