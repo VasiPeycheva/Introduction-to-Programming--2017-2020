@@ -1,3 +1,16 @@
+/****************************************************************************
+ * This file is part of the "Introduction to programming" course. FMI 2019/20
+ *****************************************************************************/
+
+ /**
+  * @file   solutions.cpp
+  * @author Ivan Filipov
+  * @author Kristian Krastev
+  * @author Vasilena Peycheva
+  * @date   12.2019
+  * @brief  Solution for function tasks from practice 10.
+  */
+
 #include <iostream> //cin, cout
 #include <string.h> // strlen , strcat ///
 
