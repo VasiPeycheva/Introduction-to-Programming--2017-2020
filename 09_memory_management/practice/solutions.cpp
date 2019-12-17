@@ -21,6 +21,7 @@ void resize(int*& arr, size_t old_size, size_t new_size) {
     arr = temp_arr;
 }
 
+// task_01
 void push_back(int*& arr, size_t& size, int elem) {
     
     resize(arr, size, ++size);
@@ -32,6 +33,7 @@ void pop_back(int*& arr, size_t& size) {
     resize(arr, size, --size);
 }
 
+// task_02
 void insert_at(int*& arr, size_t& size, size_t index, int elem) {
 
     int* temp_arr = new int[size + 1];
@@ -76,6 +78,7 @@ bool is_prime(int n) {
     return true;
 }
 
+// task_03
 void filter_prime(int*& arr, size_t& size) {
 
     size_t primes = 0;
@@ -95,6 +98,7 @@ void filter_prime(int*& arr, size_t& size) {
     size = primes;
 }
 
+// task_04
 void unite(int* source_arr, int*& dest_arr, size_t f_size, size_t& s_size) {
 
     size_t new_size = f_size + s_size;
