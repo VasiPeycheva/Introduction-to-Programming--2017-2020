@@ -8,18 +8,15 @@
   * @author Kristian Krastev
   * @author Vasilena Peycheva
   * @date   12.2019
-  * @brief  Solution for function tasks from practice 10.
+  * @brief  Solution for string tasks from practice 10.
   */
 
-#include <iostream> //cin, cout
-#include <string.h> // strlen , strcat ///
+#include <iostream>
+#include <iomanip>
+#include <cstring>
+// #include <ctype.h> - here isalpha(), isdigit(), islower(), etc. can be found.
 
-// #include <ctype.h> isalpha, isdigit, islower etc could be found,
-// it is a part of string.h
-
-
-// task_01 
-// more at : http://www.cplusplus.com/reference/cctype/isalpha/
+// task_01
 bool is_alpha(char c) {
 
 	return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
@@ -28,11 +25,10 @@ bool is_alpha(char c) {
 // task_02
 bool is_digit(char c) {
 
-	return c >= '0' && c <= '9';
+	return (c >= '0' && c <= '9');
 }
 
-
-// task_03 
+// task_03
 void to_lower(char* str) {
 
 	// protects our function
@@ -45,13 +41,10 @@ void to_lower(char* str) {
 
 	// loop until the terminating symbol
 	while (str[i] != '\0') {
-
 		if (isupper(str[i]))		// using isupper from ctype.h
 			str[i] += 'a' - 'A';	// using the fact that the lower letters are before
-									// the upper ones, so changing is  just 
-									// 'moving around into the ASCII table'
-		i++;
-	}
+        i++;                        // the upper ones, so changing is just
+    }                               // "moving around in the ASCII table"
 }
 
 // task_04
@@ -63,27 +56,23 @@ void change_sp_symbol(char* str, char to_change, char change_with) {
 	size_t i = 0;
 
 	while (str[i] != '\0') {
-		
 		if (str[i] == to_change)
 			str[i] = change_with;
-
 		i++;
 	}
 }
 
-// task_05 !!! atoi already included by string.h !!! 
-int m_atoi(const char* str) {	// we will not change the string's
-								// contain so passing it by const 
-								// is the right way to go
+// task_05
+int str_to_int(const char* str) { // we will not change the string's
+								  // contain so passing it by const
+								  // is the right way to go
 
 	// will not compile in debug mode when nullptr or NULL passed,
-	// but just to insure everything 
-
+	// but just to insure everything
 	if (str == nullptr)
 		return 0; // maybe
 
 	int result = 0;
-
 	int sign = 1;
 
 	if (*str == '-') { // the first char is -
@@ -92,18 +81,14 @@ int m_atoi(const char* str) {	// we will not change the string's
 	}
 
 	size_t i = 0;
-
 	while (str[i] != '\0') {
-
 		result *= 10;			// a new space at the end of the number
 		result += str[i] - '0';	// putting the new digit at the end
-
 		i++;
 	}
 
 	return result * sign;
 }
-
 
 // task_06
 bool is_palindrome(const char* str) {
@@ -112,41 +97,38 @@ bool is_palindrome(const char* str) {
 		return false;
 
 	size_t len = strlen(str);
-
 	size_t i = 0;
 
-	while (i < len / 2)						// looking at the front and at the end
+	while (i < len / 2)	{					// looking at the front and at the end
 		if (str[i] != str[len - (i + 1)])	// the last element is on index str[len-1]
 			return false;
 		else
 			i++;
+	}
 
 	// if the first half is the reversed second
 	return true;
-
 }
 
 // task_07
 void reverse(char* str) {
 
 	size_t len = strlen(str);
-
 	size_t i = 0;
 
 	while (i < len / 2) { //looking at the front and at the end
 		std::swap(str[i], str[len - (i + 1)]);
 		i++;
 	}
-
 }
 
 
 // task_08
 // returns false if there was some kind of memory problem
-bool dynamic_concat(char*& dest, const char* src) { // the dest pointer will be redirected, 
+bool dynamic_concat(char*& dest, const char* src) { // the dest pointer will be redirected,
 													// so taking it by ref is essential
 
-	char* new_mem_buff = new (std::nothrow) char[strlen(dest) + strlen(src) + 1]; 
+	char* new_mem_buff = new (std::nothrow) char[strlen(dest) + strlen(src) + 1];
 	// enough memory for both strings' contain + '\0'
 
 	if (new_mem_buff == nullptr)
@@ -161,7 +143,7 @@ bool dynamic_concat(char*& dest, const char* src) { // the dest pointer will be 
 	dest = new_mem_buff; // redirecting the pointer from main/other function
 
 	return true;
-}					
+}
 
 
 // task_09
@@ -172,13 +154,12 @@ bool is_vowel(char c) {
 
 	c = tolower(c);
 
-	return c == 'a' || c == 'e' || 
-		   c == 'i' || c == 'u' || 
+	return c == 'a' || c == 'e' ||
+		   c == 'i' || c == 'u' ||
 		   c == 'o';
-	
 }
 
-void compact(char*& str) {	// will redirect str -> reference!
+void compact(char*& str) { // will redirect str -> reference!
 
 	if (str == nullptr)
 		return;
@@ -191,13 +172,11 @@ void compact(char*& str) {	// will redirect str -> reference!
 	size_t i = 0, i_buff = 0;
 
 	while (str[i] != '\0') {
-
 		if (is_vowel(str[i])) { // skipping the vowels
 			i++;
 			continue;
 		}
-
-		//copying other symbols
+		// copying other symbols
 		buff[i_buff++] = str[i++];
 	}
 
@@ -209,7 +188,6 @@ void compact(char*& str) {	// will redirect str -> reference!
 	str = new (std::nothrow) char[strlen(buff) + 1];
 
 	if (str == nullptr) {
-	
 		str = buff;
 		return;
 	}
@@ -218,7 +196,6 @@ void compact(char*& str) {	// will redirect str -> reference!
 	strcpy(str, buff);
 
 	delete[] buff;
-
 }
 
 const unsigned int LETTERS_COUNT = 26;
@@ -228,15 +205,14 @@ void most_common_alpha(const char* str) {
 	if (str == nullptr)
 		return;
 
-	size_t times_occ[LETTERS_COUNT] = { 0, }; // how many times each 
+    // how many times each
 	// letter occurs
 	// mapping index 0 - 'a'
 	// index 1 - 'b' and etc
-
+	size_t times_occ[LETTERS_COUNT] = { 0, };
 	size_t i = 0;
 
 	while (str[i] != '\0') {
-
 		if (is_alpha(str[i]))
 			times_occ[tolower(str[i]) - 'a']++;
 		// counts the current letter by adding one
@@ -245,17 +221,15 @@ void most_common_alpha(const char* str) {
 	}
 
 	// now the task is to find a maximum in an array
-
 	size_t max_index = 0;
-	for (size_t i = 1; i < LETTERS_COUNT; i++)
+	for (i = 1; i < LETTERS_COUNT; i++)
 		if (times_occ[max_index] < times_occ[i])
 			max_index = i;
 
-	// re-mapping to find which char that is 
-	std::cout << char(max_index + 'a')
-		<< " times : " << times_occ[max_index];
+	// re-mapping to find which char that is
+	std::cout << '\'' << char(max_index + 'a') << "\' - "
+		      << times_occ[max_index] << "(times)";
 }
-
 
 int main() {
 
@@ -270,11 +244,11 @@ int main() {
 
 
 	std::cout << "-----------Task 3-----------" << std::endl;
-	char toL[] = "abcd578ABCD";
+	char to_low[] = "abcd578ABCD";
 
-	std::cout << "string before toLower : " << toL << std::endl;
-	to_lower(toL);
-	std::cout << "string after toLower : " << toL << std::endl;
+	std::cout << "string before toLower: " << to_low << std::endl;
+	to_lower(to_low);
+	std::cout << "string after toLower:  " << to_low << std::endl;
 
 
 	std::cout << "-----------Task 4-----------" << std::endl;
@@ -283,17 +257,17 @@ int main() {
 	char ch = '*';
 	char sp = '1';
 
-	std::cout << "string before change { " << ch << " -> " << sp 
+	std::cout << "string before change { " << ch << " -> " << sp
 		<< " } is " << to_ch << std::endl;
 	change_sp_symbol(to_ch, ch, sp);
-	std::cout << "string after change : " << to_ch << std::endl;
+	std::cout << "string after change: " << to_ch << std::endl;
 
 	std::cout << "-----------Task 5-----------" << std::endl;
-	std::cout << "the sting 1234 is as a number is : " << m_atoi("1234") << std::endl;
+	std::cout << "the sting 1234 is as a number is: " << str_to_int("1234") << std::endl;
 
 	int res = 0;
-	std::cout << "the sting -5678 is as a number is : ";
-	res = m_atoi("-5678");
+	std::cout << "the sting -5678 is as a number is: ";
+	res = str_to_int("-5678");
 	std::cout << res << std::endl;
 
 	std::cout << "-----------Task 6-----------" << std::endl;
@@ -321,7 +295,7 @@ int main() {
 	char* my_text = new (std::nothrow) char[8];
 
 	if (my_text == nullptr)
-		return -1;
+		return 1;
 
 	strcpy(my_text, "my_text");
 
@@ -342,18 +316,20 @@ int main() {
 	char* dyn_cpt = new char[strlen(cpt) + 1];
 	strcpy(dyn_cpt, cpt);
 
-	std::cout << "the string before compact : " << dyn_cpt << std::endl;
+	std::cout << "the string before compact: " << dyn_cpt << std::endl;
 	compact(dyn_cpt);
-	std::cout << "the string after compact : " << dyn_cpt << std::endl;
-	
+	std::cout << "the string after compact:  " << dyn_cpt << std::endl;
+
 	delete[] dyn_cpt;
 
 	std::cout << "-----------Task 10-----------" << std::endl;
 	const char* c_alpha = "inThisWordTheMostCommonLetterIS";
-	std::cout << "the most common letter in \\"
-		<< c_alpha << "\\ is : " << std::endl;
+	std::cout << "the most common letter in "
+	          << std::quoted(c_alpha)
+		      << " is:" << std::endl;
 
 	most_common_alpha(c_alpha);
 
+    std::cout << std::endl;
 	return 0;
 }
