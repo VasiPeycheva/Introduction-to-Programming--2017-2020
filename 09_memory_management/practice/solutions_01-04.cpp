@@ -6,9 +6,8 @@
   * @file   solutions.cpp
   * @author Ivan Filipov
   * @author Kristian Krastev
-  * @author Vasilena Peycheva
   * @date   12.2019
-  * @brief  Solution for function tasks from practice 9.
+  * @brief  Solution for tasks 01-04 from practice 9 (memory management).
   */
 
 #include <iostream>
@@ -16,34 +15,43 @@
 
 void print(int* arr, size_t size) {
 
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0; i < size; i++) {
         std::cout << arr[i] << ' ';
+    }
 
 	std::cout << std::endl;
 }
 
-void resize(int*& arr, size_t old_size, size_t new_size) {
-    
-    int* temp_arr = new int[new_size];
+// resize an array, return false, if there is no memory available
+bool resize(int*& arr, size_t old_size, size_t new_size) {
+
+    int* temp_arr = new (std::nothrow) int[new_size];
+    if (!temp_arr) return false;
+
     size_t size = old_size < new_size ? old_size : new_size;
 
     for (size_t i = 0; i < size; i++)
         temp_arr[i] = arr[i];
-    
+
     delete[] arr;
     arr = temp_arr;
+
+    return true;
 }
 
 // task_01
 void push_back(int*& arr, size_t& size, int elem) {
-    
-    resize(arr, size, ++size);
-    arr[size - 1] = elem;
+
+    if (resize(arr, size, size + 1)) {
+        arr[size] = elem;
+        ++size;
+    }
 }
 
 void pop_back(int*& arr, size_t& size) {
 
-    resize(arr, size, --size);
+    if (resize(arr, size, size - 1))
+        --size;
 }
 
 // task_02
@@ -52,10 +60,10 @@ void insert_at(int*& arr, size_t& size, size_t index, int elem) {
     int* temp_arr = new int[size + 1];
     for (size_t i = 0; i < index; i++)
         temp_arr[i] = arr[i];
-    
+
     temp_arr[index] = elem;
 
-    for (index; index < size; index++)
+    for (; index < size; index++)
         temp_arr[index + 1] = arr[index];
 
     delete[] arr;
@@ -68,17 +76,17 @@ void remove_at(int*& arr, size_t& size, size_t index) {
     int* temp_arr = new int[size - 1];
     for (size_t i = 0; i < index; i++)
         temp_arr[i] = arr[i];
-    
-    for (index; index < size - 1; index++)
+
+    for (; index < size - 1; index++)
         temp_arr[index] = arr[index + 1];
-    
+
     delete[] arr;
     arr = temp_arr;
     size--;
 }
 
 bool is_prime(int n) {
-    
+
     if (n <= 2)
 		return true;
 
@@ -98,14 +106,13 @@ void filter_prime(int*& arr, size_t& size) {
     for (size_t i = 0; i < size; i++)
         if(is_prime(arr[i]))
             primes++;
-    
 
     int* temp_arr = new int[primes];
     int temp_cnt = 0;
     for (size_t i = 0; i < size; i++)
         if(is_prime(arr[i]))
             temp_arr[temp_cnt++] = arr[i];
-    
+
     delete[] arr;
     arr = temp_arr;
     size = primes;
@@ -118,7 +125,7 @@ void unite(int* source_arr, int*& dest_arr, size_t f_size, size_t& s_size) {
     int* temp_arr = new int[new_size];
     size_t temp_cnt = 0;
     size_t i = 0, j = 0;
-    for (i,j; i < f_size && j < s_size; ) {
+    for (; i < f_size && j < s_size; ) {
         if(source_arr[i] <= dest_arr[j])
             temp_arr[temp_cnt++] = source_arr[i++];
         else
@@ -137,7 +144,7 @@ void unite(int* source_arr, int*& dest_arr, size_t f_size, size_t& s_size) {
 
 int main() {
     size_t size = 1;
-	// allocate the memory we need and let the funcions handle it
+	// allocate the memory we need and let the functions handle it
 	// we delete it after we finish using it
     int* arr = new int[size];
     arr[0] = 2;
