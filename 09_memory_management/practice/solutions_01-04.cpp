@@ -3,7 +3,7 @@
  *****************************************************************************/
 
  /**
-  * @file   solutions.cpp
+  * @file   solutions_01-04.cpp
   * @author Ivan Filipov
   * @author Kristian Krastev
   * @date   12.2019
@@ -143,6 +143,7 @@ void unite(int* source_arr, int*& dest_arr, size_t f_size, size_t& s_size) {
 }
 
 int main() {
+
     size_t size = 1;
 	// allocate the memory we need and let the functions handle it
 	// we delete it after we finish using it
