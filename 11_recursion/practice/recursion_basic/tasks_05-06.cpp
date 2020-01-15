@@ -1,4 +1,17 @@
-﻿#include <iostream>
+﻿/****************************************************************************
+ * This file is part of the "Introduction to programming" course. FMI 2019/20
+ *****************************************************************************/
+
+ /**
+  * @file   task_05-06.cpp
+  * @author Ivan Filipov
+  * @author Kristian Krastev
+  * @author Vasilena Peycheva
+  * @date   01.2020
+  * @brief  Solution for recursion tasks from practice 11.
+  */
+
+#include <iostream>
 
 // PAY ATTENTION how swapping two code lines changes the whole program
 /*************** Task 5 ***************/
