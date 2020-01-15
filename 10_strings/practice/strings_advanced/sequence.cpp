@@ -70,5 +70,6 @@ int main() {
 
 	char* sequence = get_sequence(5);
 	
+	delete[] sequence;
 	return 0;
 }
