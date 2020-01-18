@@ -3,12 +3,10 @@
  *****************************************************************************/
 
  /**
-  * @file   task_05.cpp
+  * @file   solution_05.cpp
   * @author Ivan Filipov
-  * @author Kristian Krastev
-  * @author Vasilena Peycheva
   * @date   01.2020
-  * @brief  Solution for recursion tasks from practice 11.
+  * @brief  Solution for recursion task 05 from practice 13.
   */
 
 #include <iostream>
@@ -26,21 +24,17 @@ void print_matrix(size_t k) {
 		for (size_t j = 0; j < k; j++)
 			std::cout << std::setw(3)
 				<< matrix[i][j];
-
 		std::cout << std::endl;
 	}
 
-	std::cout << std::endl
-		<< std::endl
-		<< std::endl
-		<< std::endl;
+	std::cout << std::endl << std::endl
+		      << std::endl << std::endl;
 }
 
 void fill_matrix(const size_t k, size_t it, size_t cur_size) {
 
 	// only one cell to go
 	if (it == k * k) {
-
 		matrix[k / 2][k / 2] = it;
 		return;
 	}
@@ -66,10 +60,8 @@ void fill_matrix(const size_t k, size_t it, size_t cur_size) {
 	for (size_t i = border; i > start_cell; i--)
 		matrix[start_cell][i] = it++;
 
-	
 	if (it <= k * k)
 		fill_matrix(k, it, cur_size - 2);
-
 }
 
 int main() {
@@ -77,11 +69,8 @@ int main() {
 	unsigned int k = 1;
 
 	while (k <= NUM_TESTS) {
-
 		fill_matrix(k, 1, k);
-
 		print_matrix(k);
-
 		k++;
 	}
 
