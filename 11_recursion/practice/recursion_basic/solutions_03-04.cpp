@@ -3,12 +3,12 @@
  *****************************************************************************/
 
  /**
-  * @file   task_03-04.cpp
+  * @file   solutions_03-04.cpp
   * @author Ivan Filipov
   * @author Kristian Krastev
   * @author Vasilena Peycheva
   * @date   01.2020
-  * @brief  Solution for recursion tasks from practice 11.
+  * @brief  Solution for recursion tasks from practice 12.
   */
 
 #include <iostream>
@@ -17,10 +17,10 @@
 // print the binary representation of a number
 // "actual function"
 void print_bits_rec(unsigned int number, unsigned int position) {
-	
+
 	unsigned int mask = 1 << (position - 1);
-	std::cout << ((number&mask) ? "1" : "0");
-	
+	std::cout << ((number & mask) ? "1" : "0");
+
 	if (position == 1)
 		return;
 	else
@@ -28,11 +28,11 @@ void print_bits_rec(unsigned int number, unsigned int position) {
 }
 
 // example of a "wrapper function"
-// "wrapper function" is a function which wraps another function (in our example the recursive one). 
+// "wrapper function" is a function which wraps another function (in our example the recursive one).
 // It's essentially another function which calls the actual function.
 void print_bits(unsigned int number) {
 
-	unsigned int position = sizeof(unsigned int) * 8; 
+	unsigned int position = sizeof(unsigned int) * 8;
 	return print_bits_rec(number, position);
 }
 
@@ -40,19 +40,19 @@ void print_bits(unsigned int number) {
 // print the number of zeros and ones in the binary representation of a number
 // main logic
 void count_bits_rec(unsigned int number, unsigned int position, int &zeroes, int &ones) {
-	
+
 	unsigned int mask = 1 << (position - 1);
 	((number&mask) ? ones++ : zeroes++);
-	
+
 	if (position == 1)
 		return;
-	
+
 	else
 		return count_bits_rec(number, position - 1, zeroes, ones);
 }
 
 void count_bits(unsigned int number) {
-	
+
 	int zeroes = 0;
 	int ones = 0;
 	unsigned int position = sizeof(unsigned int) * 8;
@@ -63,6 +63,7 @@ void count_bits(unsigned int number) {
 int main() {
 
 	unsigned int number;
+	std::cout << "N = ";
 	std::cin >> number;
 	// task_03
 	print_bits(number);
