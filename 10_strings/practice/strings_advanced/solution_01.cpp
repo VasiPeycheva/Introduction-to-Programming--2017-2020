@@ -3,24 +3,23 @@
  *****************************************************************************/
 
  /**
-  * @file   dictionary.cpp
+  * @file   solution_01.cpp
   * @author Ivan Filipov
   * @author Kristian Krastev
-  * @author Vasilena Peycheva
   * @date   01.2020
-  * @brief  Solution for advanced_string tasks from practice 10.
+  * @brief  Solution for task 1 from advanced_string tasks (practice 11).
   */
 
 #include <iostream> // cin, cout
-#include <string.h> // strlen, strcat 
+#include <cstring>  // strlen, strcat
 
 const unsigned int WORD_CNT = 3;
 const unsigned int MAX_INPUT = 1024;
 
 bool check_dic(const char* dic[], const char* word) {
 	for (size_t i = 0; i < WORD_CNT; i++)
-		if (strcmp(word, dic[i]) == 0) 	// if the word on position i 
-			return true;				//in the dicionary is as same as the given one
+		if (std::strcmp(word, dic[i]) == 0) // if the word on position i
+			return true;				    // in the dictionary is as same as the given one
 
 	return false;
 }
@@ -33,21 +32,19 @@ int main() {
 
 	std::cin.getline(input, MAX_INPUT); //reading the whole input
 
-	//for each word form it, check into the dictionary
+	// for each word form it, check into the dictionary
 
-	//takes the first word
-	char* curr_word = strtok(input, " ");
+	// takes the first word
+	char* curr_word = std::strtok(input, " ");
 	unsigned int how_many = 0;
 	while (curr_word != nullptr) {
-
 		if (check_dic(dic, curr_word))
 			how_many++;
-
 		// takes the next word form input string
-		curr_word = strtok(nullptr, " "); 
+		curr_word = std::strtok(nullptr, " ");
 	}
 
-	std::cout << how_many << '\n';
+	std::cout << how_many << std::endl;
 
 	return 0;
 }

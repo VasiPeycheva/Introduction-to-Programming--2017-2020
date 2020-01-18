@@ -3,18 +3,16 @@
  *****************************************************************************/
 
  /**
-  * @file   yoda_talks.cpp
+  * @file   solution_02.cpp
   * @author Ivan Filipov
-  * @author Kristian Krastev
-  * @author Vasilena Peycheva
   * @date   01.2020
-  * @brief  Solution for advanced_string tasks from practice 10.
+  * @brief  Solution for task 2 from advanced_string tasks (practice 11).
   */
 
 #include <iostream>
-#include <string.h> // strtok, strlen, strcpy
-#include <time.h> 	// time
-#include <stdlib.h> // rand
+#include <cstring> // strtok, strlen, strcpy
+#include <ctime>   // time
+#include <cstdlib> // rand
 
 const unsigned int MAX_INPUT = 1024;
 
@@ -27,10 +25,8 @@ size_t how_many_words(const char* str) {
 	size_t cnt = 1, i = 0; // at least one word
 
 	while (str[i] != '\0') {
-
 		if (str[i] == ' ')
 			cnt++;
-
 		i++;
 	}
 
@@ -64,8 +60,7 @@ void yoda_talks(char** words, size_t size) {
 
 	// while there is untaken word
 	while (num_taken < size) {
-
-		index = rand() % size; // trying to take this word
+		index = std::rand() % size; // trying to take this word
 
 		while (is_taken_word[index])
 			index = (index + 1) % size; // try the next one, if outsize array, start from the beg
@@ -93,22 +88,21 @@ int main() {
 	size_t words_cnt = how_many_words(buff);
 
 	// allocating pointer for each string ( word )
-	char** words = new char*[words_cnt];
+	char** words = new (std::nothrow) char*[words_cnt];
+    if (!words) return 1; 
 
 	// taking the first word from the buff
-	char* word = strtok(buff, " ");
+	char* word = std::strtok(buff, " ");
 
 	int i = 0;
 	while (word != nullptr) {
-
 		// allocating memory for the current word
-		words[i] = new (std::nothrow) char[strlen(word) + 1];
+		words[i] = new (std::nothrow) char[std::strlen(word) + 1];
 
 		if (words[i] == nullptr) {
-
 			std::cerr << "can't allocate memory :( !\n";
 			free_words(words, i - 1);
-			return -1;
+			return 1;
 		}
 
 		// copying its content
@@ -117,14 +111,14 @@ int main() {
 		i++;
 
 		// taking the next word
-		word = strtok(nullptr, " ");
+		word = std::strtok(nullptr, " ");
 	}
 
 	// makes us sure that all the memory is successfully allocated and copied
 	// for (int j = 0; j < i; j++)
 	// std::cout << words[j] << std::endl;
 
-	srand(time(nullptr));
+	std::srand(std::time(nullptr));
 
 	yoda_talks(words, words_cnt);
 

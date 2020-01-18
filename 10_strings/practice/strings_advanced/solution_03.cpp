@@ -3,12 +3,12 @@
  *****************************************************************************/
 
  /**
-  * @file   crossword.cpp
+  * @file   solution_03.cpp
   * @author Ivan Filipov
   * @author Kristian Krastev
   * @author Vasilena Peycheva
   * @date   01.2020
-  * @brief  Solution for advanced_string tasks from practice 10.
+  * @brief  Solution for task 3 from advanced_string tasks (practice 11).
   */
 
 #include <iostream>
@@ -56,7 +56,7 @@ int check_cross(char cross[][MAX], int size) {
 }
 
 int main() {
-	
+
 	char cross[MAX][MAX];
 	int size;
 	std::cin >> size;
