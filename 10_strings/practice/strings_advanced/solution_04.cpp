@@ -43,7 +43,7 @@ bool append_chars(char*& str, size_t cnt, char c) {
     // allocate enough memory
     size_t old_len = strlen(str);
     size_t new_len = old_len + cnt + 1;
-    char* new_mem = new (std::nothrow) char[new_len];
+    char* new_mem = new (std::nothrow) char[new_len + 1];
     if (!new_mem) return false;
     // copy the old contain
     std::strcpy(new_mem, str);
